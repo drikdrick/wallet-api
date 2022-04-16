@@ -34,7 +34,7 @@ public class Customer {
     @JoinColumn(name = "wallet_id", referencedColumnName = "id")
     private Wallet wallet;
 
-    public CustomerResponseDTO convertToResponse(){
+    public CustomerResponseDTO convertToResponse() {
         return CustomerResponseDTO.builder()
                 .id(this.id)
                 .name(this.name)

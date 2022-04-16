@@ -15,7 +15,7 @@ public class CustomerController {
     private CustomerService customerService;
 
     @GetMapping("/customers")
-    public ResponseEntity<List<CustomerResponseDTO>> getCustomers(){
+    public ResponseEntity<List<CustomerResponseDTO>> getCustomers() {
         List<Customer> customers = this.customerService.getAll();
 
         List<CustomerResponseDTO> customerResponseDTOS = customers.stream()
@@ -26,7 +26,7 @@ public class CustomerController {
     }
 
     @PostMapping("/customer")
-    public ResponseEntity<CustomerResponseDTO> createCustomer(@RequestBody CustomerRequestDTO customerRequestDTO){
+    public ResponseEntity<CustomerResponseDTO> createCustomer(@RequestBody CustomerRequestDTO customerRequestDTO) {
         Customer newCustomer = customerRequestDTO.convertToEntity();
 
         Customer customer = this.customerService.createCustomer(newCustomer);
@@ -36,7 +36,7 @@ public class CustomerController {
     }
 
     @GetMapping("/customer/{id}")
-    public ResponseEntity<CustomerResponseDTO> getCustomer(@PathVariable("id")BigInteger id){
+    public ResponseEntity<CustomerResponseDTO> getCustomer(@PathVariable("id") BigInteger id) {
         Customer customer = customerService.getOne(id);
 
         CustomerResponseDTO customerResponseDTO = customer.convertToResponse();
@@ -45,8 +45,9 @@ public class CustomerController {
     }
 
     @PutMapping("/customer/{id}")
-    public ResponseEntity<CustomerResponseDTO> updateCustomer(@PathVariable("id")BigInteger id, @RequestBody CustomerRequestDTO customerRequestDTO){
-        Customer customer =customerRequestDTO.convertToEntity();
+    public ResponseEntity<CustomerResponseDTO> updateCustomer(@PathVariable("id") BigInteger id,
+            @RequestBody CustomerRequestDTO customerRequestDTO) {
+        Customer customer = customerRequestDTO.convertToEntity();
         customer.setId(id);
 
         Customer updatedCustomer = customerService.updateCustomer(customer);

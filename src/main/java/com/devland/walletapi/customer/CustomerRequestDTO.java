@@ -3,7 +3,6 @@ package com.devland.walletapi.customer;
 import com.devland.walletapi.wallet.WalletRequestDTO;
 import lombok.*;
 
-import java.math.BigInteger;
 import java.util.Date;
 
 @Getter
@@ -21,7 +20,7 @@ public class CustomerRequestDTO {
 
     private WalletRequestDTO walletRequestDTO;
 
-    public Customer convertToEntity(){
+    public Customer convertToEntity() {
         return Customer.builder()
                 .name(this.name)
                 .NIK(this.NIK)
