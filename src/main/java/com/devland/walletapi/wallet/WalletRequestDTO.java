@@ -8,7 +8,8 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class WalletRequestDTO {
-
+    // TODO
+    // Apakah wallet request perlu id?
     private double walletBalance;
 
     public Wallet convertToEntity() {
