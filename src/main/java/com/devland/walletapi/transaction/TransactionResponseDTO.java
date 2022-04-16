@@ -1,5 +1,8 @@
 package com.devland.walletapi.transaction;
 
+import java.math.BigInteger;
+import java.time.LocalDateTime;
+
 import com.devland.walletapi.wallet.Wallet;
 
 import lombok.AllArgsConstructor;
@@ -15,13 +18,16 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class TransactionRequestDTO {
+public class TransactionResponseDTO {
+    private BigInteger id;
+
     private String description;
+
+    private LocalDateTime createdAt;
 
     private double amount;
 
     private Wallet target;
 
     private TransactionType type;
-
 }
