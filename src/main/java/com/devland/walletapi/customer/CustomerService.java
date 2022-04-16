@@ -12,29 +12,29 @@ import java.util.Optional;
 public class CustomerService {
     private final CustomerRepository customerRepository;
 
-    public List<Customer> getAll(){
+    public List<Customer> getAll() {
         return this.customerRepository.findAll();
     }
 
-    public Customer createCustomer(Customer customer){
+    public Customer createCustomer(Customer customer) {
         return this.customerRepository.save(customer);
     }
 
-    public Customer getOne(BigInteger id){
+    public Customer getOne(BigInteger id) {
         Optional<Customer> optionalCustomer = this.customerRepository.findById(id);
-        if (optionalCustomer.isEmpty()){
+        if (optionalCustomer.isEmpty()) {
             throw new CustomerNotFoundException();
         }
-        return  optionalCustomer.get();
+        return optionalCustomer.get();
     }
 
-    public Customer updateCustomer(Customer customer){
+    public Customer updateCustomer(Customer customer) {
         this.getOne(customer.getId());
 
         return this.customerRepository.save(customer);
     }
 
-    public void deleteCustomer(Customer customer){
+    public void deleteCustomer(Customer customer) {
         Customer deletedCustomer = this.getOne(customer.getId());
 
         this.customerRepository.delete(deletedCustomer);

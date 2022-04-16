@@ -28,7 +28,7 @@ public class Wallet {
     @Column(nullable = false, updatable = false)
     private LocalDateTime walletCreatedAt;
 
-    public WalletResponseDTO convertToResponse(){
+    public WalletResponseDTO convertToResponse() {
         return WalletResponseDTO.builder().id(this.id)
                 .walletBalance(this.walletBalance)
                 .transactions(this.transactions)

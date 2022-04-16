@@ -2,7 +2,6 @@ package com.devland.walletapi.wallet;
 
 import lombok.*;
 
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -12,7 +11,7 @@ public class WalletRequestDTO {
 
     private double walletBalance;
 
-    public Wallet convertToEntity(){
+    public Wallet convertToEntity() {
         return Wallet.builder()
                 .walletBalance(this.walletBalance).build();
     }
