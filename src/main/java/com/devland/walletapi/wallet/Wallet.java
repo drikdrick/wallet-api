@@ -23,7 +23,7 @@ public class Wallet {
 
     private double walletBalance;
 
-    @OneToMany(mappedBy = "wallet")
+    @OneToMany
     private List<Transaction> transactions;
 
     @CreationTimestamp

@@ -3,14 +3,11 @@ package com.devland.walletapi.transaction;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import com.devland.walletapi.wallet.Wallet;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.AllArgsConstructor;
@@ -40,7 +37,14 @@ public class Transaction {
 
     private double amount;
 
+    @ManyToOne
+    @JoinColumn(name = "target_id")
+    @JsonIgnore
     private Wallet target;
 
     private TransactionType type;
+
+    public TransactionResponseDTO convertToResponse(){
+       return TransactionResponseDTO.builder().id(this.id).amount(this.amount).target(this.target).type(this.type).createdAt(this.createdAt).build();
+    }
 }

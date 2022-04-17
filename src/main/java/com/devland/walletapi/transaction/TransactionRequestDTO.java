@@ -24,4 +24,8 @@ public class TransactionRequestDTO {
 
     private TransactionType type;
 
+    public Transaction convertToEntity(){
+        return Transaction.builder().description(this.description).amount(this.amount).target(this.target).type(this.type).build();
+    }
+
 }
