@@ -43,4 +43,10 @@ public class Transaction {
     private Wallet target;
 
     private TransactionType type;
+
+    public TransactionResponseDTO convertToResponse() {
+        return TransactionResponseDTO.builder().id(this.id).description(this.description).target(this.target)
+                .type(this.type).createdAt(this.createdAt).build();
+    }
+
 }

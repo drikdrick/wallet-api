@@ -2,6 +2,10 @@ package com.devland.walletapi.wallet;
 
 import java.math.BigInteger;
 
+import com.devland.walletapi.transaction.TransactionService;
+import com.devland.walletapi.transaction.TransactionType;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
@@ -10,6 +14,9 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class WalletService {
     private final WalletRepository walletRepository;
+
+    @Autowired
+    private TransactionService transactionService;
 
     public Wallet getOne(BigInteger id) {
         return this.walletRepository.findById(id).orElseThrow(() -> new WalletNotFoundException());
@@ -30,6 +37,7 @@ public class WalletService {
         Wallet wallet = this.getOne(id);
         wallet.setWalletBalance(wallet.getWalletBalance() + amount);
         this.update(wallet);
+        this.transactionService.create(wallet, TransactionType.IN, amount);
     }
 
     public void takeBalance(BigInteger id, Double amount) {
@@ -37,6 +45,7 @@ public class WalletService {
         this.checkBalance(wallet, amount);
         wallet.setWalletBalance(wallet.getWalletBalance() - amount);
         this.update(wallet);
+        this.transactionService.create(wallet, TransactionType.OUT, amount);
     }
 
     public void transfer(Wallet sender, Wallet receiver, Double amount) {
