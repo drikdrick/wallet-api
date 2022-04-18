@@ -6,6 +6,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
 public class WalletNotFoundException extends RuntimeException {
     public WalletNotFoundException() {
-        super();
+        super("Wallet not found.");
     }
 }
