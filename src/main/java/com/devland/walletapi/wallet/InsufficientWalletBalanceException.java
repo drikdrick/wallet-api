@@ -6,6 +6,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(value = HttpStatus.BAD_REQUEST)
 public class InsufficientWalletBalanceException extends RuntimeException {
     public InsufficientWalletBalanceException() {
-        super();
+        super("Insufficient Wallet Balance. Transaction failed.");
     }
 }
