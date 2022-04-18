@@ -1,6 +1,6 @@
 package com.devland.walletapi.transaction;
 
-import com.devland.walletapi.wallet.Wallet;
+import java.math.BigInteger;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,8 +20,9 @@ public class TransactionRequestDTO {
 
     private double amount;
 
-    private Wallet target;
+    // private Wallet receiver;
 
-    private TransactionType type;
+    // private Wallet sender;
 
+    private BigInteger receiver;
 }

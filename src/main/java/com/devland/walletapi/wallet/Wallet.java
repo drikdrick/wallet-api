@@ -12,10 +12,11 @@ import java.util.List;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
 public class Wallet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
