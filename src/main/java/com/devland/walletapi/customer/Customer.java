@@ -22,6 +22,7 @@ public class Customer {
 
     private String name;
 
+    @Column(unique = true, updatable = false)
     private String NIK;
 
     private Date dateOfBirth;

@@ -7,5 +7,5 @@ import java.math.BigInteger;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, BigInteger> {
-
+    Customer findByNIK(String nIK);
 }
